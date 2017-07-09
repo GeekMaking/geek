@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="geek@39.108.64.172">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="geek">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <table id="6" parent="2" name="joinus"/>
+    <table id="7" parent="2" name="learn"/>
+    <table id="8" parent="2" name="masterpiece"/>
+    <table id="9" parent="2" name="member"/>
+    <table id="10" parent="2" name="suggestion"/>
+    <table id="11" parent="2" name="team"/>
+    <table id="12" parent="2" name="user"/>
+    <column id="13" parent="6" name="j_no">
+      <Position>1</Position>
+      <Comment>参加人学号</Comment>
+      <DataType>varchar(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="14" parent="6" name="j_name">
+      <Position>2</Position>
+      <Comment>参加人姓名</Comment>
+      <DataType>varchar(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="15" parent="6" name="j_phone">
+      <Position>3</Position>
+      <Comment>参加人电话</Comment>
+      <DataType>varchar(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="16" parent="6" name="j_email">
+      <Position>4</Position>
+      <Comment>参加人邮箱</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="17" parent="6" name="PRIMARY">
+      <ColNames>j_no</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="18" parent="7" name="l_no">
+      <Position>1</Position>
+      <Comment>学习资源编号</Comment>
+      <DataType>varchar(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="19" parent="7" name="l_name">
+      <Position>2</Position>
+      <Comment>学习资源名称</Comment>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="20" parent="7" name="l_type">
+      <Position>3</Position>
+      <Comment>学习资源类型</Comment>
+      <DataType>varchar(5)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="7" name="l_image">
+      <Position>4</Position>
+      <Comment>图片地址</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="22" parent="7" name="l_desc">
+      <Position>5</Position>
+      <Comment>学习资源的简介</Comment>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="7" name="l_link">
+      <Position>6</Position>
+      <Comment>学习资源链接</Comment>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <index id="24" parent="7" name="learn_ibfk_1">
+      <ColNames>l_image</ColNames>
+    </index>
+    <key id="25" parent="7" name="PRIMARY">
+      <ColNames>l_no</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="26" parent="8" name="m_no">
+      <Position>1</Position>
+      <Comment>作品编号</Comment>
+      <DataType>varchar(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="8" name="m_name">
+      <Position>2</Position>
+      <Comment>作品名称</Comment>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="8" name="m_desc">
+      <Position>3</Position>
+      <Comment>作品介绍</Comment>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="8" name="m_image">
+      <Position>4</Position>
+      <Comment>作品图片名</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="30" parent="8" name="m_link">
+      <Position>5</Position>
+      <Comment>作品链接</Comment>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <index id="31" parent="8" name="masterpiece_ibfk_1">
+      <ColNames>m_image</ColNames>
+    </index>
+    <key id="32" parent="8" name="PRIMARY">
+      <ColNames>m_no</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="33" parent="9" name="no">
+      <Position>1</Position>
+      <Comment>成员学号</Comment>
+      <DataType>varchar(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="9" name="name">
+      <Position>2</Position>
+      <Comment>成员姓名</Comment>
+      <DataType>varchar(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="35" parent="9" name="phone">
+      <Position>3</Position>
+      <Comment>成员电话</Comment>
+      <DataType>varchar(11)|0</DataType>
+    </column>
+    <column id="36" parent="9" name="team">
+      <Position>4</Position>
+      <Comment>团队编号</Comment>
+      <DataType>varchar(2)|0</DataType>
+    </column>
+    <column id="37" parent="9" name="graduation">
+      <Position>5</Position>
+      <Comment>毕业去向</Comment>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="38" parent="9" name="grade">
+      <Position>6</Position>
+      <Comment>年级</Comment>
+      <DataType>varchar(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="9" name="des">
+      <Position>7</Position>
+      <Comment>成员简介</Comment>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="9" name="image">
+      <Position>8</Position>
+      <Comment>成员照片名</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <index id="41" parent="9" name="member_ibfk_2">
+      <ColNames>image</ColNames>
+    </index>
+    <index id="42" parent="9" name="team">
+      <ColNames>team</ColNames>
+    </index>
+    <key id="43" parent="9" name="PRIMARY">
+      <ColNames>no</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="44" parent="9" name="member_ibfk_1">
+      <ColNames>team</ColNames>
+      <RefSchemaName>geek</RefSchemaName>
+      <RefTableName>team</RefTableName>
+      <RefColNames>t_no</RefColNames>
+    </foreign-key>
+    <column id="45" parent="10" name="s_time">
+      <Position>1</Position>
+      <Comment>意见输入时间</Comment>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="46" parent="10" name="s_phone">
+      <Position>2</Position>
+      <Comment>意见人电话</Comment>
+      <DataType>varchar(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="10" name="s_view">
+      <Position>3</Position>
+      <Comment>具体意见</Comment>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="48" parent="10" name="PRIMARY">
+      <ColNames>s_time
+s_phone</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="49" parent="11" name="t_no">
+      <Position>1</Position>
+      <Comment>团队编号</Comment>
+      <DataType>varchar(2)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="11" name="t_name">
+      <Position>2</Position>
+      <Comment>团队名称</Comment>
+      <DataType>varchar(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="11" name="t_leader">
+      <Position>3</Position>
+      <Comment>负责人编号</Comment>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="52" parent="11" name="t_desc">
+      <Position>4</Position>
+      <Comment>团队简介</Comment>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="53" parent="11" name="t_image">
+      <Position>5</Position>
+      <Comment>团队照片</Comment>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <index id="54" parent="11" name="team_ibfk_1">
+      <ColNames>t_image</ColNames>
+    </index>
+    <index id="55" parent="11" name="t_leader">
+      <ColNames>t_leader</ColNames>
+    </index>
+    <key id="56" parent="11" name="PRIMARY">
+      <ColNames>t_no</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="57" parent="12" name="user_name">
+      <Position>1</Position>
+      <Comment>管理员登录名</Comment>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="58" parent="12" name="password">
+      <Position>2</Position>
+      <Comment>管理员登录密码</Comment>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="59" parent="12" name="PRIMARY">
+      <ColNames>user_name</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

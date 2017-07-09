@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--引入数据库资源文件-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <!--启动Spring注释-->
+    <context:annotation-config/>
+    <!--自动扫描注释-->
+    <context:component-scan base-package="com.geek.*" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    </context:component-scan>
+    <!--配置数据源-->
+    <bean id="dataSource"
+          class="com.mchange.v2.c3p0.ComboPooledDataSource" scope="prototype">
+        <property name="driverClass" value="${driver}"/>
+        <property name="jdbcUrl" value="${url}"/>
+        <property name="user" value="${user}"/>
+        <property name="password" value="${password}"/>
+        <property name="maxIdleTime" value="${maxIdleTime}"/>
+        <property name="minPoolSize" value="${minPoolSize}"/>
+        <property name="maxPoolSize" value="${maxPoolSize}"/>
+    </bean>
+
+    <!--让Spring容器自动管理SqlSession-->
+    <bean id="sqlSessionFactory"
+          class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--设置配置好的数据源-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--加载mybatis配置文件-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!--加载所有的映射文件-->
+        <property name="mapperLocations" value="classpath:com/geek/xml/*"/>
+    </bean>
+
+
+    <bean id="sqlSessionTemplate"
+          class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+
+    <!--事务管理-->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--使用注解管理事务 @Transactional-->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+
+    <bean id="configurer"
+          class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.geek"/>
+        <property name="sqlSessionTemplateBeanName" value="sqlSessionTemplate"/>
+        <property name="annotationClass" value="org.springframework.stereotype.Repository"/>
+    </bean>
+
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--设置上传文件的最大尺寸为5MB-->
+        <property name="maxUploadSize">
+            <value>5242880</value>
+        </property>
+    </bean>
+
+</beans>
